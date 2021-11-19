@@ -11,54 +11,85 @@
     to choose the lottery that you prefer the most. Note that lottery "D" means that you choose not to invest and keep the money.</p> <br>
 
 <html>
-<style>
-table, th, td {
-  border:0.1px solid black;
-}
-</style>
-<body>
-<table style="width:50%">
-  <tr>
-    <th>State</th>
-    <th>Prob.</th>
-    <th>A</th>
-    <th>B</th>
-    <th>C</th>
-    <th>D</th>
-  </tr>
-  <tr>
-    <td>1</td>
-    <td>0.125</td>
-    <td>139.99</td>
-    <td>{{ w_1 }}</td>
-    <td>337.50</td>
-    <td>100.00</td>
-  </tr>
-  <tr>
-    <td>2</td>
-    <td>0.375</td>
-    <td>117.71</td>
-    <td>{{ w_2 }}</td>
-    <td>168.75</td>
-    <td>100.00</td>
-  </tr>
-  <tr>
-    <td>3</td>
-    <td>0.375</td>
-    <td>98.99</td>
-    <td>{{ w_3 }}</td>
-    <td>84.38</td>
-    <td>100.00</td>
-  </tr>
-  <tr>
-    <td>4</td>
-    <td>0.125</td>
-    <td>83.24</td>
-    <td>{{ w_4 }}</td>
-    <td>42.19</td>
-    <td>100.00</td>
-  </tr>
-</table>
+  <style>
+    table {
+      border: none;
+    }
+  </style>
+
+<!--   Эти два файла занимаются рисованием, если что, прогугли, как подключить файлы с django, но по идее должно рабоать, это обычный html-->
+  <head>
+    <link rel="stylesheet" href="domarrow.css">
+    <script src="domarrow.js"></script>
+  </head>
+  <body>
+    <table>
+      <tr>
+        <th style="padding: 30px;"></th>
+        <th style="padding: 30px;"></th>
+        <th style="padding: 30px;"></th>
+        <th style="padding: 30px;"></th>
+        <th style="padding: 30px;">A</th>
+        <th style="padding: 30px;">B</th>
+        <th style="padding: 30px;">C</th>
+        <th style="padding: 30px;">D</th>
+      </tr>
+      <tr>
+        <td style="padding: 30px;"></td>
+        <td style="padding: 30px;"></td>
+        <td style="padding: 30px;">0.125</td>
+        <th id="id_2" style="padding: 30px;"></th>
+        <td style="padding: 30px;">139.99</td>
+        <td style="padding: 30px;">{{ w_1 }}</td>
+        <td style="padding: 30px;">337.50</td>
+        <td style="padding: 30px;">100.00</td>
+      </tr>
+      <tr>
+        <td style="padding: 30px;"></td>
+        <td style="padding: 30px;"></td>
+        <td style="padding: 30px;">0.375</td>
+        <th id="id_3" style="padding: 30px;"></th>
+        <td style="padding: 30px;">117.71</td>
+        <td style="padding: 30px;">{{ w_2 }}</td>
+        <td style="padding: 30px;">168.75</td>
+        <td style="padding: 30px;">100.00</td>
+      </tr>
+      <tr>
+          <td>$S: 100</td>
+          <td id="id_1"></td>
+          <td ></td>
+          <td ></td>
+          <td ></td>
+          <td ></td>
+          <td ></td>
+          <td ></td>
+        </tr>
+      <tr>
+        <td style="padding: 30px;"></td>
+        <td style="padding: 30px;"></td>
+        <td style="padding: 30px;">0.375</td>
+        <th id="id_4" style="padding: 30px;"></th>
+        <td style="padding: 30px;">98.99</td>
+        <td style="padding: 30px;">{{ w_3 }}</td>
+        <td style="padding: 30px;">84.38</td>
+        <td style="padding: 30px;">100.00</td>
+      </tr>
+      <tr>
+          <td style="padding: 30px;"></td>
+          <td style="padding: 30px;"></td>
+          <td style="padding: 30px;">0.125</td>
+          <th id="id_5" style="padding: 30px;"></th>
+          <td style="padding: 30px;">83.24</td>
+          <td style="padding: 30px;">{{ w_4 }}</td>
+          <td style="padding: 30px;">42.19</td>
+          <td style="padding: 30px;">100.00</td>
+        </tr>
+      </table>
+<!--    Это стрелки, откуда начинать и до какой точки-->
+    <connection from="#id_1" to="#id_2" color="red" tail></connection>
+    <connection from="#id_1" to="#id_3" color="red" tail></connection>
+    <connection from="#id_1" to="#id_4" color="red" tail></connection>
+    <connection from="#id_1" to="#id_5" color="red" tail></connection>
 
     {% formfield player.lottery label="Please choose your most preferred lottery" %} <br>
 
@@ -72,8 +103,8 @@ table, th, td {
 
 {% block styles %}
     <style>
-        table, th, td {
-            border: 1px solid black;
+        table {
+            border: none;
             text-align: center;
         }
         div {margin-top: 50px}
